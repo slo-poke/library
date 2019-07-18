@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>My Library</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="topDiv">
+        <h1>Welcome, {{  session['user'][0]['first_name'] }}!</h1>
+        <a href="/logout">Log off</a>
+    </div>
+    <div class="nav">
+        <ul>
+            <li><a href="/home">Home</a></li>
+            <li class="dropdown">
+                <a href="" class="dropdownBtn">Account</a>
+                <div class="dropdown_content">
+                    <a href="/order_history">Order History</a>
+                    <a href="/user_profile">Profile</a>
+                    {% if session['user'][0]['user_group'] == "admin" %}
+                        <a href="/get_user">Update User</a>
+                        <a href="/add_book">Add Book</a>
+                        <a href="/checkout">Check Out</a>
+                        <a href="/checkin">Check In</a>
+                        <a href="/add_event">Add Event</a>
+                        <a href="/choose_event">Update Event</a>
+                    {% endif %}
+                </div>
+            </li>
+            <li><a href="/search">Search</a></li>
+        </ul>
+    </div>
+    <div class="wrapper">
+        <div class="inner_wrapper">
+        {% with successes = get_flashed_messages(category_filter=['success']) %}
+            {% if successes %}
+                {%- for msg in successes %}
+                    <p class="success">{{ msg }}</p>
+                {% endfor -%}
+            {% endif %}
+        {% endwith %}
+        <h1>Choose an Event to Update</h1>
+        <form action="/update_event" method="POST">
+            <select name="event">
+                {% for event in all_events %}
+                    <option value="{{ event['event_id'] }}">{{ event['event_name'] }}</option>
+                {% endfor %}
+            </select>
+            <input type="submit" value="Submit">
+        </form>
+        </div>
+    </div>
+</body>
+</html>

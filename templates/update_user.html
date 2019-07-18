@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>My Library</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="topDiv">
+        <h1>Welcome, {{ session['user'][0]['first_name'] }}!</h1>
+        <a href="/logout">Log off</a>
+    </div>
+    <div class="nav">
+        <ul>
+            <li><a href="/home">Home</a></li>
+            <li class="dropdown">
+                <a href="" class="dropdownBtn">Account</a>
+                <div class="dropdown_content">
+                    <a href="/order_history">Order History</a>
+                    <a href="/user_profile">Profile</a>
+                    {% if session['user'][0]['user_group'] == "admin" %}
+                        <a href="/get_user">Update User</a>
+                        <a href="/add_book">Add Book</a>
+                        <a href="/checkout">Check Out</a>
+                        <a href="/checkin">Check In</a>
+                        <a href="/add_event">Add Event</a>
+                        <a href="/choose_event">Update Event</a>
+                    {% endif %}
+                </div>
+            </li>
+            <li><a href="/search">Search</a></li>
+        </ul>
+    </div>
+    <div class="wrapper">
+        <div class="inner_wrapper2">
+        {% with successes = get_flashed_messages(category_filter=['success']) %}
+            {% if successes %}
+                {%- for msg in successes %}
+                    <p class="success">{{ msg }}</p>
+                {% endfor -%}
+            {% endif %}
+        {% endwith %}
+        <h1>Update User</h1>
+        <form action="/process_user_update/{{ user['email'] }}" method="POST">
+            <p><label>First Name </label></p>
+            <input type="text" name="fname" value="{{ user['first_name'] }}">
+            <p><label>Last Name </label></p>
+            <input type="text" name="lname" value="{{ user['last_name'] }}">
+            <p><label>Email </label></p>
+            <input type="text" name="email" value="{{ user['email'] }}">
+            <p><label>Password </label></p>
+            <input type="password" name="password">
+            <p><label>Group </label></p>
+                <select name = "group">
+                    <option value="user">User</option>
+                    <option value="admin">Admin</option>
+                </select>
+            <p><label>Balance </label></p>
+            <input type="text" name="bal" value="{{ user['balance'] }}">
+            <br /><input type="submit" value="Update" class="button">
+        </form>
+        </div>
+    </div>
+</body>
+</html>

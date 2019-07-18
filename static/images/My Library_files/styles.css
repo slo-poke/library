@@ -1,0 +1,150 @@
+.topDiv {
+    display: block;
+    padding: 0 1%;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.topDiv h1 {
+    display: inline-block;
+}
+.topDiv a {
+    display: inline-block;
+    margin-left: 75%;
+    text-align: right;
+}
+.nav {
+    background-color: black;
+    color: white;
+    height: 75px;
+    width: 100%;
+    display: block;
+}
+.nav ul {
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+    overflow: hidden;
+}
+.nav li {
+    float: left;
+}
+.nav li a, .dropdownBtn {
+    color: white;
+    padding: 0px 20px; 
+    display: inline-block;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 30px;
+    line-height: 75px;
+    text-align: center;
+    text-decoration: none;
+}
+li a:hover, .dropdown:hover .dropbtn {
+    background-color: gray;
+}
+.nav li ul .dropdown {
+    display: inline-block;
+}
+.dropdown_content {
+    display: none;
+    position: absolute;
+    background-color: gray;
+    /* font-size: 18px; */
+    min-width: 175px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+.nav .dropdown_content a {
+    color: black;
+    padding: 0px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+    font-size: 18px;
+    line-height: 50px;
+}
+.dropdown_content a:hover {
+    background-color: #f1f1f1f1;
+}
+.dropdown:hover .dropdown_content {
+    display: block;
+}
+.wrapper {
+    margin: auto;
+    width: 85%;
+}
+.wrapper h1 {
+    text-align: center;
+}
+/* log & reg css */
+form p {
+    font-weight: bold;
+}
+.register {
+    width:48%;
+    display: inline-block;
+    vertical-align: top;
+}
+.login {
+    width: 48%;
+    display: inline-block;
+    vertical-align: top;
+}
+input {
+    width: 60%;
+}
+.btn {
+    width: 15%;
+    display: block;
+    margin-top: 10px;
+}
+/* end log & reg */
+
+/* flash messages */
+.success {
+    color: green;
+}
+.error {
+    font-weight: normal;
+    color: red;
+}
+/* end flash messages */
+
+/* featured */
+.star {
+    display: inline-block;
+    vertical-align: top;
+    width: 15px;
+    height: 15px;
+    background-size: contain;
+    margin-right: 5px;
+}
+.featured_container, .result {
+    display: inline-block;
+    vertical-align: top;
+    width: 97%;
+}
+.featured_container p {
+    margin-top: 0px;
+    margin-bottom: 5px;
+}
+/* end featured */
+
+.book {
+    width: 25%;
+    display: inline-block;
+    margin: 0px auto;
+}
+
+/* .carousel-item {
+    position: relative;
+    display: none;
+    float: left;
+    width: 50%;
+    margin-right: -100%;
+    backface-visibility: hidden;
+} */
+
+.full_width {
+  width: 100%;
+  background-color: #808080;
+  margin: 0px;
+}
